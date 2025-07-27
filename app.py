@@ -11,6 +11,7 @@ def index():
 def get_info():
     video_url = request.form.get('url')
     if not video_url:
+        # English Error Message
         return render_template('index.html', error="Please provide a video link.")
 
     try:
@@ -57,6 +58,7 @@ def get_info():
                                    audio_formats=audio_formats)
 
     except Exception as e:
+        # English Error Message
         error_message = f"An error occurred. Please check the link or try another one."
         return render_template('index.html', error=error_message)
 
