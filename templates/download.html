@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডাউনলোড লিংক</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; padding-top: 2rem; padding-bottom: 2rem; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: auto; width: 90%; max-width: 800px; }
+        .header { display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;}
+        img { max-width: 200px; border-radius: 8px;}
+        h1 { font-size: 1.3rem; margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f7f7f7; }
+        a.download-btn { background-color: #28a745; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; display: inline-block; font-size: 0.9rem; }
+        .back-link { margin-top: 2rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ thumbnail }}" alt="Video Thumbnail">
+            <h1>{{ title }}</h1>
+        </div>
+        
+        <h2 style="margin-top: 2rem;">ভিডিও ফরম্যাট</h2>
+        <table>
+            <tr>
+                <th>কোয়ালিটি</th>
+                <th>সাইজ (MB)</th>
+                <th>ফরম্যাট</th>
+                <th>ডাউনলোড</th>
+            </tr>
+            {% for format in video_formats %}
+            <tr>
+                <td>{{ format.resolution }}</td>
+                <td>{{ format.filesize_mb }}</td>
+                <td>{{ format.ext }}</td>
+                <td><a href="{{ format.url }}" target="_blank" download class="download-btn">ডাউনলোড</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>শুধুমাত্র অডিও</h2>
+        <table>
+            <tr>
+                <th>কোয়ালিটি</th>
+                <th>সাইজ (MB)</th>
+                <th>ফরম্যাট</th>
+                <th>ডাউনলোড</th>
+            </tr>
+            {% for format in audio_formats %}
+            <tr>
+                <td>{{ format.abr }} kbps</td>
+                <td>{{ format.filesize_mb }}</td>
+                <td>{{ format.ext }}</td>
+                <td><a href="{{ format.url }}" target="_blank" download class="download-btn">ডাউনলোড</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/" class="back-link">অন্য ভিডিও ডাউনলোড করুন</a>
+    </div>
+</body>
+</html>
