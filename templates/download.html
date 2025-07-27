@@ -1,66 +1,141 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ডাউনলোড লিংক</title>
+    <title>Download Links</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; padding-top: 2rem; padding-bottom: 2rem; }
-        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: auto; width: 90%; max-width: 800px; }
-        .header { display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap;}
-        img { max-width: 200px; border-radius: 8px;}
-        h1 { font-size: 1.3rem; margin: 0; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
-        th { background-color: #f7f7f7; }
-        a.download-btn { background-color: #28a745; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; display: inline-block; font-size: 0.9rem; }
-        .back-link { margin-top: 2rem; display: inline-block; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .header .nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .video-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .video-header img {
+            max-width: 200px;
+            border-radius: 8px;
+        }
+        .video-header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f7f7f7;
+        }
+        a.download-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            font-weight: bold;
+            color: #4caf50;
+        }
     </style>
 </head>
 <body>
+    <header class="header">
+        <div class="logo">SaveFromNet</div>
+        <nav class="nav">
+            <a href="#">How to Download?</a>
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
     <div class="container">
-        <div class="header">
+        <div class="video-header">
             <img src="{{ thumbnail }}" alt="Video Thumbnail">
             <h1>{{ title }}</h1>
         </div>
         
-        <h2 style="margin-top: 2rem;">ভিডিও ফরম্যাট</h2>
+        <h2>Video Formats</h2>
         <table>
             <tr>
-                <th>কোয়ালিটি</th>
-                <th>সাইজ (MB)</th>
-                <th>ফরম্যাট</th>
-                <th>ডাউনলোড</th>
+                <th>Quality</th>
+                <th>Size (MB)</th>
+                <th>Format</th>
+                <th>Download</th>
             </tr>
             {% for format in video_formats %}
             <tr>
                 <td>{{ format.resolution }}</td>
                 <td>{{ format.filesize_mb }}</td>
                 <td>{{ format.ext }}</td>
-                <td><a href="{{ format.url }}" target="_blank" download class="download-btn">ডাউনলোড</a></td>
+                <td><a href="{{ format.url }}" target="_blank" download class="download-btn">Download</a></td>
             </tr>
             {% endfor %}
         </table>
 
-        <h2>শুধুমাত্র অডিও</h2>
+        <h2>Audio Only</h2>
         <table>
             <tr>
-                <th>কোয়ালিটি</th>
-                <th>সাইজ (MB)</th>
-                <th>ফরম্যাট</th>
-                <th>ডাউনলোড</th>
+                <th>Quality</th>
+                <th>Size (MB)</th>
+                <th>Format</th>
+                <th>Download</th>
             </tr>
             {% for format in audio_formats %}
             <tr>
                 <td>{{ format.abr }} kbps</td>
                 <td>{{ format.filesize_mb }}</td>
                 <td>{{ format.ext }}</td>
-                <td><a href="{{ format.url }}" target="_blank" download class="download-btn">ডাউনলোড</a></td>
+                <td><a href="{{ format.url }}" target="_blank" download class="download-btn">Download</a></td>
             </tr>
             {% endfor %}
         </table>
-        <a href="/" class="back-link">অন্য ভিডিও ডাউনলোড করুন</a>
+        <a href="/" class="back-link">Download Another Video</a>
     </div>
-<script type='text/javascript' src='//pl27272525.profitableratecpm.com/ed/10/2a/ed102a4998643fa9dc106c42f41d69ad.js'></script>
+
 </body>
 </html>

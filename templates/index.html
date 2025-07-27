@@ -1,30 +1,185 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ভিডিও ডাউনলোডার</title>
+    <title>Video Downloader</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 1rem;}
-        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 600px; }
-        input[type="url"] { width: calc(100% - 22px); padding: 10px; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
-        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
-        .error { color: red; margin-top: 1rem; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        .header .nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+        .main-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 2rem;
+        }
+        .main-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .main-content p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+        .form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .ad-banner-top {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-container {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .form-container input[type="url"] {
+            flex-grow: 1;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .form-container #pasteBtn {
+            background-color: #f0f0f0;
+            border: none;
+            border-left: 1px solid #ccc;
+            cursor: pointer;
+            padding: 0 15px;
+        }
+        .form-container button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        .resource-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .resource-links a {
+            text-decoration: none;
+            color: #333;
+            background-color: #ffffff;
+            padding: 1rem 1.5rem;
+            border: 1px solid #e7e7e7;
+            border-radius: 8px;
+        }
+        .error {
+            color: red;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>যেকোনো ভিডিও ডাউনলোড করুন</h1>
-        <p>আপনার ভিডিওর লিংকটি নিচে পেস্ট করুন।</p>
-        <form action="/get_info" method="post">
-            <input type="url" name="url" placeholder="https://..." required>
-            <br>
-            <button type="submit">ডাউনলোড লিংক খুঁজুন</button>
-        </form>
+
+    <header class="header">
+        <div class="logo">SaveFromNet</div>
+        <nav class="nav">
+            <a href="#">How to Download?</a>
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1>Free Online Video Downloader</h1>
+        <p>Download Photo & Video and save from any website.</p>
+        
+        <div class="form-wrapper">
+            <div class="ad-banner-top">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '419e3602d29f35b0be3e762bed9ed9de',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/419e3602d29f35b0be3e762bed9ed9de/invoke.js"></script>
+            </div>
+
+            <form action="/get_info" method="post">
+                <div class="form-container">
+                    <input type="url" name="url" placeholder="Paste the Link here" required>
+                    <button type="button" id="pasteBtn" title="Paste from clipboard">📋</button>
+                    <button type="submit">Download</button>
+                </div>
+            </form>
+        </div>
+
         {% if error %}
             <p class="error">{{ error }}</p>
         {% endif %}
-    </div>
-<script type='text/javascript' src='//pl27272525.profitableratecpm.com/ed/10/2a/ed102a4998643fa9dc106c42f41d69ad.js'></script>
+    </main>
+
+    <footer class="footer">
+        <h2>Other Resources</h2>
+        <div class="resource-links">
+            <a href="#">Facebook.com</a>
+            <a href="#">Instagram.com</a>
+            <a href="#">TikTok.com</a>
+            <a href="#">YouTube.com</a>
+        </div>
+    </footer>
+
+    <script>
+        const pasteBtn = document.getElementById('pasteBtn');
+        const urlInput = document.querySelector('input[name="url"]');
+
+        if (navigator.clipboard) {
+            pasteBtn.addEventListener('click', async () => {
+                try {
+                    const text = await navigator.clipboard.readText();
+                    urlInput.value = text;
+                    urlInput.focus();
+                } catch (err) {
+                    console.error('Failed to read clipboard contents: ', err);
+                    alert('Failed to paste. Please paste manually.');
+                }
+            });
+        } else {
+            pasteBtn.style.display = 'none'; // Hide button if clipboard API is not supported
+        }
+    </script>
+
 </body>
 </html>
